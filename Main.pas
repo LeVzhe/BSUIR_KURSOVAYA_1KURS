@@ -8,14 +8,18 @@ uses
 
 type
   TForm1 = class(TForm)
-    ListBox1: TListBox;
-    ListBox2: TListBox;
-    ListBox3: TListBox;
-    Button1: TButton;
-    Button2: TButton;
-    Button3: TButton;
-    Button4: TButton;
-    Button5: TButton;
+    Priority_listbox: TListBox;
+    actual_day_listbox: TListBox;
+    Holiday_listbox: TListBox;
+    Tuesday_btn: TButton;
+    Wednesday_btn: TButton;
+    Thursday_btn: TButton;
+    Friday_btn: TButton;
+    Monday_btn: TButton;
+    Priority_label: TLabel;
+    Actual_label: TLabel;
+    Holiday_label: TLabel;
+    Article_label: TLabel;
   
   private
 

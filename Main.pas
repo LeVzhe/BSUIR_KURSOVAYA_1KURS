@@ -20,6 +20,7 @@ type
     Actual_label: TLabel;
     Holiday_label: TLabel;
     Article_label: TLabel;
+    procedure FormCreate(Sender: TObject);
   
   private
 
@@ -31,8 +32,22 @@ var
   Form1: TForm1;
 
 implementation
-
 {$R *.dfm}
+
+
+procedure TForm1.FormCreate(Sender: TObject);
+var
+  holidayItems: array[1..100] of string;
+begin
+  holidayItems := fill_listbox.fillHoliday()
+
+  for i:=1 to length(holidayItems) do
+  begin
+    holiday_listbox.Items.Add(holidayItems[i])
+  end;
+
+
+end;
 
 end.
 

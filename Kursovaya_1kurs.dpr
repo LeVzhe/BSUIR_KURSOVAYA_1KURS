@@ -2,7 +2,8 @@ program Kursovaya_1kurs;
 
 uses
   Forms,
-  Main in 'Main.pas' {Form1};
+  Main in 'Main.pas' {Form1},
+  fill_listbox in 'fill_listbox.pas';
 
 {$R *.res}
 

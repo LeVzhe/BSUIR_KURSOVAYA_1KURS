@@ -32,20 +32,26 @@ var
   Form1: TForm1;
 
 implementation
+
+uses fill_listbox;
 {$R *.dfm}
 
 
 procedure TForm1.FormCreate(Sender: TObject);
+
 var
-  holidayItems: array[1..100] of string;
+  i, today: integer;
+
 begin
-  holidayItems := fill_listbox.fillHoliday()
+  today := DayOfWeek(Now)-1;
 
-  for i:=1 to length(holidayItems) do
+  for i:=1 to length(fill_listbox.fillHoliday()) do
   begin
-    holiday_listbox.Items.Add(holidayItems[i])
+    if fill_listbox.fillHoliday()[i] = '' then
+      break;
+    holiday_listbox.addItem(fill_listbox.fillHoliday()[i], nil)
   end;
-
+  //holiday_listbox.addItem(intToStr(Today), nil); для проверки, какой сейчас день недели
 
 end;
 

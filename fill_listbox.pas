@@ -1,21 +1,19 @@
 unit fill_listbox;
 
 interface
-uses dvunSpisok;
-  type
-    TArray = array[1..100] of string;
+uses HolydayList;
 
   var
     inputFile: Text;
     line: string;
     i: integer;
 
-  function fillHoliday: dvunSpisok.adr;
+  function fillHoliday: HolydayList.adr;
 
 implementation
 
 
-  function fillHoliday: dvunSpisok.adr;
+  function fillHoliday: HolydayList.adr;
   begin
     AssignFile(inputFile, 'db/hol.txt');
     Reset(inputFile);
@@ -24,12 +22,12 @@ implementation
     while not Eof(inputFile) do
     begin
       ReadLn(inputFile, line);
-      dvunSpisok.addNode(line);
+      HolydayList.addNode(line);
       Inc(i);
     end;
 
     CloseFile(inputFile);
-    fillHoliday := dvunSpisok.Head;
+    fillHoliday := HolydayList.Head;
   end;
 
 end.

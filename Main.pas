@@ -33,14 +33,14 @@ var
 
 implementation
 
-uses fill_listbox, dvunSpisok;
+uses fill_listbox, HolydayList;
 {$R *.dfm}
 
 
 procedure TForm1.FormCreate(Sender: TObject);
 
 var
-  currentNode: dvunSpisok.adr;
+  currentNode: HolydayList.adr;
   today: integer;
 
 begin

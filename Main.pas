@@ -33,25 +33,29 @@ var
 
 implementation
 
-uses fill_listbox;
+uses fill_listbox, dvunSpisok;
 {$R *.dfm}
 
 
 procedure TForm1.FormCreate(Sender: TObject);
 
 var
-  i, today: integer;
+  currentNode: dvunSpisok.adr;
+  today: integer;
 
 begin
+  currentNode := fill_listbox.fillHoliday();
   today := DayOfWeek(Now)-1;
-
-  for i:=1 to length(fill_listbox.fillHoliday()) do
+  while True do
   begin
-    if fill_listbox.fillHoliday()[i] = '' then
-      break;
-    holiday_listbox.addItem(fill_listbox.fillHoliday()[i], nil)
+    holiday_listbox.addItem(currentNode^.element, nil);
+    currentNode := currentNode^.next;
+
+    if currentNode = nil then
+      Break;
+
   end;
-  //holiday_listbox.addItem(intToStr(Today), nil); для проверки, какой сейчас день недели
+  //holiday_listbox.addItem(intToStr(Today), nil);// для проверки, какой сейчас день недели
 
 end;
 

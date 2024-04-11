@@ -1,21 +1,21 @@
 unit fill_listbox;
 
 interface
+uses dvunSpisok;
   type
     TArray = array[1..100] of string;
 
   var
     inputFile: Text;
-    linesArray: TArray;
     line: string;
     i: integer;
 
-  function fillHoliday: TArray;
+  function fillHoliday: dvunSpisok.adr;
 
 implementation
 
 
-  function fillHoliday: TArray;
+  function fillHoliday: dvunSpisok.adr;
   begin
     AssignFile(inputFile, 'db/hol.txt');
     Reset(inputFile);
@@ -24,12 +24,12 @@ implementation
     while not Eof(inputFile) do
     begin
       ReadLn(inputFile, line);
-      linesArray[i] := line;
+      dvunSpisok.addNode(line);
       Inc(i);
     end;
 
     CloseFile(inputFile);
-    fillHoliday := linesArray;
+    fillHoliday := dvunSpisok.Head;
   end;
 
 end.

@@ -20,7 +20,9 @@ type
     Actual_label: TLabel;
     Holiday_label: TLabel;
     Article_label: TLabel;
+
     procedure FormCreate(Sender: TObject);
+    procedure Monday_btnClick(Sender: TObject);
   
   private
 
@@ -33,7 +35,9 @@ var
 
 implementation
 
-uses fill_listbox, HolydayList;
+uses fill_listbox,
+      HolydayList,
+      CurrentDayList;
 {$R *.dfm}
 
 
@@ -57,6 +61,24 @@ begin
   end;
   //holiday_listbox.addItem(intToStr(Today), nil);// для проверки, какой сейчас день недели
 
+end;
+
+
+procedure TForm1.Monday_btnClick(Sender: TObject);
+var
+  currentNode: CurrentDayList.adr;
+begin
+  actual_day_listbox.clear;
+  CurrentDayList.ClearList();
+  currentNode := fill_listbox.fillCurrentDay();
+  while True do
+  begin
+    actual_day_listbox.addItem(currentNode^.element, nil);
+    currentNode := currentNode^.next;
+
+    if currentNode = nil then
+      Break;
+  end;
 end;
 
 end.

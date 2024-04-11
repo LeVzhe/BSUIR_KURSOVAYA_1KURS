@@ -1,6 +1,6 @@
 object Form1: TForm1
-  Left = 867
-  Top = 59
+  Left = 711
+  Top = 89
   Width = 440
   Height = 650
   Caption = #1055#1088#1086#1076#1091#1082#1090#1080#1074#1085#1072#1103' '#1085#1077#1076#1077#1083#1103
@@ -101,6 +101,7 @@ object Form1: TForm1
     Height = 100
     Caption = #1055#1086#1085#1077#1076#1077#1083#1100#1085#1080#1082
     TabOrder = 3
+    OnClick = Monday_btnClick
   end
   object Tuesday_btn: TButton
     Left = 8

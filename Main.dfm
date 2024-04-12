@@ -1,11 +1,11 @@
 object Form1: TForm1
-  Left = 2079
-  Top = 56
+  Left = 538
+  Top = 96
   BorderIcons = [biSystemMenu, biMinimize]
   BorderStyle = bsToolWindow
   Caption = #1055#1088#1086#1076#1091#1082#1090#1080#1074#1085#1072#1103' '#1085#1077#1076#1077#1083#1103
   ClientHeight = 591
-  ClientWidth = 454
+  ClientWidth = 684
   Color = clBtnFace
   Constraints.MaxHeight = 630
   Constraints.MaxWidth = 700
@@ -242,7 +242,7 @@ object Form1: TForm1
       Left = 8
       Top = 8
       Width = 193
-      Height = 40
+      Height = 32
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWindowText
       Font.Height = -19
@@ -296,6 +296,7 @@ object Form1: TForm1
       Font.Style = [fsBold]
       ParentFont = False
       TabOrder = 3
+      OnClick = Current_del_buttonClick
     end
     object Current_clean_btn: TButton
       Left = 104
@@ -324,7 +325,7 @@ object Form1: TForm1
       Left = 8
       Top = 8
       Width = 193
-      Height = 40
+      Height = 32
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWindowText
       Font.Height = -19
@@ -362,6 +363,7 @@ object Form1: TForm1
       Font.Style = [fsBold]
       ParentFont = False
       TabOrder = 2
+      OnClick = Holiday_del_btnClick
     end
     object Holiday_mark_btn: TButton
       Left = 8

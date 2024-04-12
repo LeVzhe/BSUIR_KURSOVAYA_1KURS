@@ -49,6 +49,8 @@ type
     procedure Holiday_add_btnClick(Sender: TObject);
     procedure Current_EditKeyPress(Sender: TObject; var Key: Char);
     procedure Holiday_EditKeyPress(Sender: TObject; var Key: Char);
+    procedure Current_del_buttonClick(Sender: TObject);
+    procedure Holiday_del_btnClick(Sender: TObject);
   
   private
 
@@ -249,6 +251,24 @@ begin
   begin
     Key := #0;
   end;
+end;
+
+procedure TForm1.Current_del_buttonClick(Sender: TObject);
+var
+  Current_elem_index: integer;
+begin
+  Current_elem_index := actual_day_listbox.ItemIndex + 1;
+  currentDayList.deleteNode(Current_elem_index, CurrentActiveDay);
+  UpdateFormList();
+end;
+
+procedure TForm1.Holiday_del_btnClick(Sender: TObject);
+var
+  holyday_elem_index: integer;
+begin
+  holyday_elem_index := holiday_listbox.ItemIndex + 1;
+  holydayList.deleteNode(holyday_elem_index);
+  UpdateFormList();
 end;
 
 end.

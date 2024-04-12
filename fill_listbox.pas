@@ -1,7 +1,7 @@
 unit fill_listbox;
 
 interface
-uses HolydayList, CurrentDayList;
+uses HolydayList, CurrentDayList, SysUtils;
 
   var
     inputFile: Text;
@@ -9,7 +9,7 @@ uses HolydayList, CurrentDayList;
     i: integer;
 
   function fillHoliday: HolydayList.adr;
-  function fillCurrentDay: CurrentDayList.adr;
+  function fillCurrentDay(CurrentActiveDay: integer): CurrentDayList.adr;
 
 implementation
 
@@ -31,9 +31,12 @@ implementation
     fillHoliday := HolydayList.Head;
   end;
 
-  function fillCurrentDay: CurrentDayList.adr;
+  function fillCurrentDay(CurrentActiveDay: integer): CurrentDayList.adr;
+  var
+    dbRef: string;
   begin
-    AssignFile(inputFile, 'db/1.txt');
+    dbRef := 'db/' + IntToStr(CurrentActiveDay) + '.txt';
+    AssignFile(inputFile, dbRef);
     Reset(inputFile);
     i := 1;
     while not Eof(inputFile) do

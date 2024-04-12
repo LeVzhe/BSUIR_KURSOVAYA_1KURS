@@ -23,6 +23,10 @@ type
 
     procedure FormCreate(Sender: TObject);
     procedure Monday_btnClick(Sender: TObject);
+    procedure Tuesday_btnClick(Sender: TObject);
+    procedure Wednesday_btnClick(Sender: TObject);
+    procedure Thursday_btnClick(Sender: TObject);
+    procedure Friday_btnClick(Sender: TObject);
   
   private
 
@@ -40,16 +44,50 @@ uses fill_listbox,
       CurrentDayList;
 {$R *.dfm}
 
+var
+  CurrentActiveDay: integer;
+
+////////UPDATE/////////////////
+procedure FillList();
+var
+  currentNode: CurrentDayList.adr;
+begin
+  currentNode := fill_listbox.fillCurrentDay(CurrentActiveDay);
+  while True do
+  begin
+    form1.actual_day_listbox.addItem(currentNode^.element, nil);
+    currentNode := currentNode^.next;
+
+    if currentNode = nil then
+      Break;
+  end;
+end;
+
+procedure ClearList();
+begin
+  form1.actual_day_listbox.clear();
+  CurrentDayList.ClearList();
+end;
+
+procedure UpdateFormList;
+begin
+  ClearList();
+  FillList();
+end;
+//////////////////////////
 
 procedure TForm1.FormCreate(Sender: TObject);
 
 var
   currentNode: HolydayList.adr;
-  today: integer;
 
 begin
+  CurrentActiveDay := DayOfWeek(Now)-1;
+  if (CurrentActiveDay = 6) or (CurrentActiveDay = 0) then
+    CurrentActiveDay := 5;
+  UpdateFormList(); //дополнить
+
   currentNode := fill_listbox.fillHoliday();
-  today := DayOfWeek(Now)-1;
   while True do
   begin
     holiday_listbox.addItem(currentNode^.element, nil);
@@ -59,27 +97,38 @@ begin
       Break;
 
   end;
-  //holiday_listbox.addItem(intToStr(Today), nil);// для проверки, какой сейчас день недели
-
 end;
-
 
 procedure TForm1.Monday_btnClick(Sender: TObject);
-var
-  currentNode: CurrentDayList.adr;
 begin
-  actual_day_listbox.clear;
-  CurrentDayList.ClearList();
-  currentNode := fill_listbox.fillCurrentDay();
-  while True do
-  begin
-    actual_day_listbox.addItem(currentNode^.element, nil);
-    currentNode := currentNode^.next;
-
-    if currentNode = nil then
-      Break;
-  end;
+  CurrentActiveDay := 1;
+  UpdateFormList();
 end;
+
+procedure TForm1.Tuesday_btnClick(Sender: TObject);
+begin
+  CurrentActiveDay := 2;
+  UpdateFormList();
+end;
+
+procedure TForm1.Wednesday_btnClick(Sender: TObject);
+begin
+  CurrentActiveDay := 3;
+  UpdateFormList();
+end;
+
+procedure TForm1.Thursday_btnClick(Sender: TObject);
+begin
+  CurrentActiveDay := 4;
+  UpdateFormList();
+end;
+
+procedure TForm1.Friday_btnClick(Sender: TObject);
+begin
+  CurrentActiveDay := 5;
+  UpdateFormList();
+end;
+
 
 end.
 

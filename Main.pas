@@ -47,6 +47,8 @@ type
     procedure Drag_btnClick(Sender: TObject);
     procedure current_add_btnClick(Sender: TObject);
     procedure Holiday_add_btnClick(Sender: TObject);
+    procedure Current_EditKeyPress(Sender: TObject; var Key: Char);
+    procedure Holiday_EditKeyPress(Sender: TObject; var Key: Char);
   
   private
 
@@ -197,12 +199,12 @@ begin
   case isExpand of
     true:
     begin
-      Drag_btn.Caption := '-';
+      Drag_btn.Caption := '<';
       Current_edit.setFocus();
     end;
     false:
     begin
-      Drag_btn.Caption := '+';
+      Drag_btn.Caption := '>';
       actual_day_listbox.SetFocus();
     end;
   end;
@@ -231,6 +233,22 @@ begin
   fill_listbox.addHolidayDb(holidayText);
   UpdateFormList();
   Holiday_edit.Clear;
+end;
+
+procedure TForm1.Current_EditKeyPress(Sender: TObject; var Key: Char);
+begin
+  if Length((Sender as TEdit).Text) >= 18 then
+  begin
+    Key := #0;
+  end;
+end;
+
+procedure TForm1.Holiday_EditKeyPress(Sender: TObject; var Key: Char);
+begin
+  if Length((Sender as TEdit).Text) >= 18 then
+  begin
+    Key := #0;
+  end;
 end;
 
 end.

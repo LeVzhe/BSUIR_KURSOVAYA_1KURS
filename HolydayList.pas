@@ -38,32 +38,19 @@ procedure addNode(elem: string);
     end;
   end;
   
-/////////////////////////////////////////////////////////
-{function Calc: extended;
-var
-  currentNode1: adr;
-  currentNode2: adr;
-  res: extended;
-  el1, el2: extended;
-  resText, addText: string;
-begin
-  currentNode1 := Head;
-  currentNode2 := tail;
-  res := 1;
-
-  while (currentNode1 <> nil) and (currentNode1 <> currentNode2) do
+procedure ClearList;
+  var
+    currentNode, tempNode: adr;
   begin
-    el1 := currentNode1^.element;
-    el2 := currentNode2^.element;
-    write('(', (currentNode1^.element):0:2, ' - ', (currentNode2^.element):0:2, ')');
-    res := res * (el1 - el2);
-    if currentNode1^.next = nil then
-      Break;
-
-    currentNode1 := currentNode1^.next.next;
-    currentNode2 := currentNode2^.prev.prev;
+    currentNode := head;
+    while currentNode <> nil do
+    begin
+      tempNode := currentNode;
+      currentNode := currentNode^.next;
+      Dispose(tempNode);
+    end;
+    head := nil;
+    tail := nil;
   end;
-  Calc := res;
-end; }
 
 end.

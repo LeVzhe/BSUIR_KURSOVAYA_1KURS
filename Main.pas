@@ -51,8 +51,21 @@ var
 procedure FillList();
 var
   currentNode: CurrentDayList.adr;
+  HolydayNode: HolydayList.adr;
 begin
   currentNode := fill_listbox.fillCurrentDay(CurrentActiveDay);
+  HolydayNode := fill_listbox.fillHoliday();
+
+  while True do
+  begin
+    form1.holiday_listbox.addItem(HolydayNode^.element, nil);
+    HolydayNode := HolydayNode^.next;
+
+    if HolydayNode = nil then
+      Break;
+
+  end;
+
   while True do
   begin
     form1.actual_day_listbox.addItem(currentNode^.element, nil);
@@ -66,7 +79,9 @@ end;
 procedure ClearList();
 begin
   form1.actual_day_listbox.clear();
+  form1.holiday_listbox.clear();
   CurrentDayList.ClearList();
+  holydayList.ClearList();
 end;
 
 procedure UpdateFormList;
@@ -85,18 +100,8 @@ begin
   CurrentActiveDay := DayOfWeek(Now)-1;
   if (CurrentActiveDay = 6) or (CurrentActiveDay = 0) then
     CurrentActiveDay := 5;
-  UpdateFormList(); //дополнить
 
-  currentNode := fill_listbox.fillHoliday();
-  while True do
-  begin
-    holiday_listbox.addItem(currentNode^.element, nil);
-    currentNode := currentNode^.next;
-
-    if currentNode = nil then
-      Break;
-
-  end;
+  UpdateFormList();
 end;
 
 procedure TForm1.Monday_btnClick(Sender: TObject);

@@ -1,14 +1,16 @@
 object Form1: TForm1
-  Left = 976
-  Top = 134
-  Width = 440
-  Height = 650
+  Left = 577
+  Top = 132
+  BorderIcons = [biSystemMenu, biMinimize]
+  BorderStyle = bsToolWindow
   Caption = #1055#1088#1086#1076#1091#1082#1090#1080#1074#1085#1072#1103' '#1085#1077#1076#1077#1083#1103
+  ClientHeight = 591
+  ClientWidth = 454
   Color = clBtnFace
-  Constraints.MaxHeight = 650
-  Constraints.MaxWidth = 440
-  Constraints.MinHeight = 650
-  Constraints.MinWidth = 440
+  Constraints.MaxHeight = 630
+  Constraints.MaxWidth = 700
+  Constraints.MinHeight = 630
+  Constraints.MinWidth = 470
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
   Font.Height = -11
@@ -20,7 +22,7 @@ object Form1: TForm1
   TextHeight = 13
   object Holiday_label: TLabel
     Left = 216
-    Top = 432
+    Top = 264
     Width = 157
     Height = 20
     Caption = #1055#1083#1072#1085#1099' '#1085#1072' '#1074#1099#1093#1086#1076#1085#1099#1077':'
@@ -33,7 +35,7 @@ object Form1: TForm1
   end
   object Actual_label: TLabel
     Left = 216
-    Top = 224
+    Top = 56
     Width = 119
     Height = 20
     Caption = #1055#1083#1072#1085#1099' '#1085#1072' '#1076#1077#1085#1100':'
@@ -46,7 +48,7 @@ object Form1: TForm1
   end
   object Priority_label: TLabel
     Left = 216
-    Top = 56
+    Top = 416
     Width = 185
     Height = 20
     Caption = #1055#1088#1080#1086#1088#1080#1090#1077#1090#1099' '#1085#1072' '#1085#1077#1076#1077#1083#1102':'
@@ -58,21 +60,47 @@ object Form1: TForm1
     ParentFont = False
   end
   object Article_label: TLabel
-    Left = 64
+    Left = 48
     Top = 8
-    Width = 305
-    Height = 37
+    Width = 382
+    Height = 47
     Caption = #1055#1088#1086#1076#1091#1082#1090#1080#1074#1085#1072#1103' '#1085#1077#1076#1077#1083#1103
     Font.Charset = DEFAULT_CHARSET
-    Font.Color = clWindowText
+    Font.Color = clGreen
     Font.Height = -32
+    Font.Name = 'Italic'
+    Font.Style = []
+    ParentFont = False
+  end
+  object Label1: TLabel
+    Left = 464
+    Top = 56
+    Width = 191
+    Height = 20
+    Caption = #1048#1079#1084#1077#1085#1080#1090#1100' '#1087#1083#1072#1085#1099' '#1085#1072' '#1076#1077#1085#1100
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -16
+    Font.Name = 'MS Sans Serif'
+    Font.Style = []
+    ParentFont = False
+  end
+  object Label2: TLabel
+    Left = 464
+    Top = 264
+    Width = 213
+    Height = 20
+    Caption = #1048#1079#1084#1077#1085#1080#1090#1100' '#1087#1083#1072#1085#1099' '#1085#1072' '#1074#1099#1093#1086#1076#1085'.'
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -16
     Font.Name = 'MS Sans Serif'
     Font.Style = []
     ParentFont = False
   end
   object Priority_listbox: TListBox
     Left = 216
-    Top = 80
+    Top = 440
     Width = 201
     Height = 137
     ItemHeight = 13
@@ -80,7 +108,7 @@ object Form1: TForm1
   end
   object actual_day_listbox: TListBox
     Left = 216
-    Top = 248
+    Top = 80
     Width = 201
     Height = 177
     ItemHeight = 13
@@ -88,7 +116,7 @@ object Form1: TForm1
   end
   object Holiday_listbox: TListBox
     Left = 216
-    Top = 456
+    Top = 288
     Width = 201
     Height = 121
     ItemHeight = 13
@@ -100,6 +128,12 @@ object Form1: TForm1
     Width = 200
     Height = 100
     Caption = #1055#1086#1085#1077#1076#1077#1083#1100#1085#1080#1082
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -19
+    Font.Name = 'MS Sans Serif'
+    Font.Style = []
+    ParentFont = False
     TabOrder = 3
     OnClick = Monday_btnClick
   end
@@ -109,6 +143,12 @@ object Form1: TForm1
     Width = 200
     Height = 100
     Caption = #1042#1090#1086#1088#1085#1080#1082
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -19
+    Font.Name = 'MS Sans Serif'
+    Font.Style = []
+    ParentFont = False
     TabOrder = 4
     OnClick = Tuesday_btnClick
   end
@@ -118,6 +158,12 @@ object Form1: TForm1
     Width = 200
     Height = 100
     Caption = #1057#1088#1077#1076#1072
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -19
+    Font.Name = 'MS Sans Serif'
+    Font.Style = []
+    ParentFont = False
     TabOrder = 5
     OnClick = Wednesday_btnClick
   end
@@ -127,6 +173,12 @@ object Form1: TForm1
     Width = 200
     Height = 100
     Caption = #1063#1077#1090#1074#1077#1088#1075
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -19
+    Font.Name = 'MS Sans Serif'
+    Font.Style = []
+    ParentFont = False
     TabOrder = 6
     OnClick = Thursday_btnClick
   end
@@ -136,7 +188,144 @@ object Form1: TForm1
     Width = 200
     Height = 100
     Caption = #1055#1103#1090#1085#1080#1094#1072
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -19
+    Font.Name = 'MS Sans Serif'
+    Font.Style = []
+    ParentFont = False
     TabOrder = 7
     OnClick = Friday_btnClick
+  end
+  object Drag_btn: TButton
+    Left = 418
+    Top = 80
+    Width = 31
+    Height = 497
+    Cursor = crHandPoint
+    Caption = '+'
+    Font.Charset = ANSI_CHARSET
+    Font.Color = clMaroon
+    Font.Height = -29
+    Font.Name = 'Artifakt Element'
+    Font.Style = [fsBold]
+    ParentFont = False
+    TabOrder = 8
+    OnClick = Drag_btnClick
+  end
+  object Panel1: TPanel
+    Left = 464
+    Top = 80
+    Width = 209
+    Height = 177
+    BorderStyle = bsSingle
+    TabOrder = 9
+    object Current_Edit: TEdit
+      Left = 8
+      Top = 8
+      Width = 193
+      Height = 40
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -19
+      Font.Name = 'MS Sans Serif'
+      Font.Style = []
+      ParentFont = False
+      ParentShowHint = False
+      ShowHint = False
+      TabOrder = 0
+    end
+    object current_add_btn: TButton
+      Left = 8
+      Top = 56
+      Width = 89
+      Height = 49
+      Caption = #1044#1086#1073#1072#1074#1080#1090#1100
+      TabOrder = 1
+    end
+    object Current_mark_btn: TButton
+      Left = 8
+      Top = 112
+      Width = 89
+      Height = 49
+      Caption = #1042' '#1087#1088#1080#1086#1088#1080#1090#1077#1090
+      TabOrder = 2
+    end
+    object Current_del_button: TButton
+      Left = 104
+      Top = 56
+      Width = 91
+      Height = 49
+      Caption = #1059#1076#1072#1083#1080#1090#1100
+      TabOrder = 3
+    end
+    object Current_clean_btn: TButton
+      Left = 104
+      Top = 112
+      Width = 91
+      Height = 49
+      Caption = #1054#1095#1080#1089#1090#1080#1090#1100' '#1087#1086#1083#1077
+      TabOrder = 4
+    end
+  end
+  object Panel2: TPanel
+    Left = 464
+    Top = 288
+    Width = 209
+    Height = 177
+    BorderStyle = bsSingle
+    TabOrder = 10
+    object Holiday_Edit: TEdit
+      Left = 8
+      Top = 8
+      Width = 193
+      Height = 40
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -19
+      Font.Name = 'MS Sans Serif'
+      Font.Style = []
+      ParentFont = False
+      TabOrder = 0
+    end
+    object Holiday_add_btn: TButton
+      Left = 8
+      Top = 56
+      Width = 89
+      Height = 49
+      Caption = #1044#1086#1073#1072#1074#1080#1090#1100
+      TabOrder = 1
+    end
+    object Holiday_del_btn: TButton
+      Left = 104
+      Top = 56
+      Width = 89
+      Height = 49
+      Caption = #1059#1076#1072#1083#1080#1090#1100
+      TabOrder = 2
+    end
+    object Holiday_mark_btn: TButton
+      Left = 8
+      Top = 112
+      Width = 89
+      Height = 49
+      Caption = #1042' '#1087#1088#1080#1086#1088#1080#1090#1077#1090
+      TabOrder = 3
+    end
+    object Holiday_clean_btn: TButton
+      Left = 104
+      Top = 112
+      Width = 89
+      Height = 49
+      Caption = #1054#1095#1080#1089#1090#1080#1090#1100' '#1087#1086#1083#1077
+      TabOrder = 4
+    end
+  end
+  object btn_onTimer: TTimer
+    Enabled = False
+    Interval = 1
+    OnTimer = btn_onTimerTimer
+    Left = 416
+    Top = 48
   end
 end

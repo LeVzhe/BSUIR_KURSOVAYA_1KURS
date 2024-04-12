@@ -4,7 +4,7 @@ interface
 
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
-  Dialogs, StdCtrls, Buttons;
+  Dialogs, StdCtrls, Buttons, Menus, ExtCtrls;
 
 type
   TForm1 = class(TForm)
@@ -20,6 +20,22 @@ type
     Actual_label: TLabel;
     Holiday_label: TLabel;
     Article_label: TLabel;
+    Drag_btn: TButton;
+    btn_onTimer: TTimer;
+    Panel1: TPanel;
+    Panel2: TPanel;
+    Current_Edit: TEdit;
+    Holiday_Edit: TEdit;
+    Current_mark_btn: TButton;
+    Current_del_button: TButton;
+    Current_clean_btn: TButton;
+    current_add_btn: TButton;
+    Label1: TLabel;
+    Label2: TLabel;
+    Holiday_add_btn: TButton;
+    Holiday_del_btn: TButton;
+    Holiday_mark_btn: TButton;
+    Holiday_clean_btn: TButton;
 
     procedure FormCreate(Sender: TObject);
     procedure Monday_btnClick(Sender: TObject);
@@ -27,6 +43,8 @@ type
     procedure Wednesday_btnClick(Sender: TObject);
     procedure Thursday_btnClick(Sender: TObject);
     procedure Friday_btnClick(Sender: TObject);
+    procedure btn_onTimerTimer(Sender: TObject);
+    procedure Drag_btnClick(Sender: TObject);
   
   private
 
@@ -46,6 +64,7 @@ uses fill_listbox,
 
 var
   CurrentActiveDay: integer;
+  isExpand: boolean;
 
 ////////UPDATE/////////////////
 procedure FillList();
@@ -103,14 +122,14 @@ procedure TForm1.FormCreate(Sender: TObject);
 begin
   CurrentActiveDay := DayOfWeek(Now)-1;
   case CurrentActiveDay of
-    1: form1.Article_label.Caption := 'Сегодня ПОНЕДЕЛЬНИК';
-    2: form1.Article_label.Caption := 'Сегодня ВТОРНИК';
-    3: form1.Article_label.Caption := 'Сегодня СРЕДА';
-    4: form1.Article_label.Caption := 'Сегодня ЧЕТВЕРГ';
-    5: form1.Article_label.Caption := 'Сегодня ПЯТНИЦА';
-    6: form1.Article_label.Caption := 'Сегодня СУББОТА';
-    0: form1.Article_label.Caption := 'Сегодня ВОСКРЕСЕНИЕ';
-    else form1.Article_label.Caption := 'Продуктивная неделя';
+    1: form1.Article_label.Caption := ' Сегодня ПОНЕДЕЛЬНИК';
+    2: form1.Article_label.Caption := ' Сегодня ВТОРНИК';
+    3: form1.Article_label.Caption := ' Сегодня СРЕДА';
+    4: form1.Article_label.Caption := ' Сегодня ЧЕТВЕРГ';
+    5: form1.Article_label.Caption := ' Сегодня ПЯТНИЦА';
+    6: form1.Article_label.Caption := ' Сегодня СУББОТА';
+    0: form1.Article_label.Caption := ' Сегодня ВОСКРЕСЕНИЕ';
+    else form1.Article_label.Caption := ' Продуктивная неделя';
   end;
   if (CurrentActiveDay = 6) or (CurrentActiveDay = 0) then
     CurrentActiveDay := 5;
@@ -148,6 +167,34 @@ begin
   UpdateFormList();
 end;
 
+
+procedure TForm1.btn_onTimerTimer(Sender: TObject);
+begin
+  if isExpand then
+  begin
+    if Form1.Width < 700 then
+      Form1.Width := Form1.Width + 10
+    else
+      btn_onTimer.Enabled := False;
+  end
+  else
+  begin
+  if Form1.Width > 470 then
+    Form1.Width := Form1.Width - 10
+  else
+    btn_onTimer.Enabled := False;
+  end;
+end;
+
+procedure TForm1.Drag_btnClick(Sender: TObject);
+begin
+  isExpand := not isExpand;
+  case isExpand of
+    true: Drag_btn.Caption := '-';
+    false: Drag_btn.Caption := '+';
+  end;
+  btn_onTimer.Enabled := True;
+end;
 
 end.
 

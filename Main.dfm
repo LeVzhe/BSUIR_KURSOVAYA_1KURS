@@ -1,11 +1,11 @@
 object Form1: TForm1
   Left = 577
-  Top = 132
+  Top = 133
   BorderIcons = [biSystemMenu, biMinimize]
   BorderStyle = bsToolWindow
   Caption = #1055#1088#1086#1076#1091#1082#1090#1080#1074#1085#1072#1103' '#1085#1077#1076#1077#1083#1103
   ClientHeight = 591
-  ClientWidth = 454
+  ClientWidth = 684
   Color = clBtnFace
   Constraints.MaxHeight = 630
   Constraints.MaxWidth = 700
@@ -103,7 +103,13 @@ object Form1: TForm1
     Top = 440
     Width = 201
     Height = 137
-    ItemHeight = 13
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -16
+    Font.Name = 'MS Sans Serif'
+    Font.Style = []
+    ItemHeight = 20
+    ParentFont = False
     TabOrder = 0
   end
   object actual_day_listbox: TListBox
@@ -111,7 +117,13 @@ object Form1: TForm1
     Top = 80
     Width = 201
     Height = 177
-    ItemHeight = 13
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -16
+    Font.Name = 'MS Sans Serif'
+    Font.Style = []
+    ItemHeight = 20
+    ParentFont = False
     TabOrder = 1
   end
   object Holiday_listbox: TListBox
@@ -119,7 +131,13 @@ object Form1: TForm1
     Top = 288
     Width = 201
     Height = 121
-    ItemHeight = 13
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -16
+    Font.Name = 'MS Sans Serif'
+    Font.Style = []
+    ItemHeight = 20
+    ParentFont = False
     TabOrder = 2
   end
   object Monday_btn: TButton
@@ -242,6 +260,7 @@ object Form1: TForm1
       Height = 49
       Caption = #1044#1086#1073#1072#1074#1080#1090#1100
       TabOrder = 1
+      OnClick = current_add_btnClick
     end
     object Current_mark_btn: TButton
       Left = 8
@@ -295,6 +314,7 @@ object Form1: TForm1
       Height = 49
       Caption = #1044#1086#1073#1072#1074#1080#1090#1100
       TabOrder = 1
+      OnClick = Holiday_add_btnClick
     end
     object Holiday_del_btn: TButton
       Left = 104

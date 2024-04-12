@@ -8,6 +8,8 @@ uses HolydayList, CurrentDayList, SysUtils;
     line: string;
     i: integer;
 
+  procedure addCurrentDb(CurrentActiveDay: integer; str:string);
+  procedure addHolidayDb(str:string);
   function fillHoliday: HolydayList.adr;
   function fillCurrentDay(CurrentActiveDay: integer): CurrentDayList.adr;
 
@@ -50,5 +52,28 @@ implementation
     fillCurrentDay := CurrentDayList.Head;
   end;
 
+procedure addCurrentDb(CurrentActiveDay: integer; str:string);
+  var
+    dbRef: string;
+  begin
+    dbRef := 'db/' + IntToStr(CurrentActiveDay) + '.txt';
+    AssignFile(inputFile, dbRef);
+    append(inputFile);
+    write(inputFile, str);
+    writeln(inputFile);
+    close(inputFile);
+  end;
+
+procedure addHolidayDb(str:string);
+  var
+    dbRef: string;
+  begin
+    dbRef := 'db/hol.txt';
+    AssignFile(inputFile, dbRef);
+    append(inputFile);
+    write(inputFile, str);
+    writeln(inputFile);
+    close(inputFile);
+  end;
 end.
  

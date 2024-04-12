@@ -45,6 +45,8 @@ type
     procedure Friday_btnClick(Sender: TObject);
     procedure btn_onTimerTimer(Sender: TObject);
     procedure Drag_btnClick(Sender: TObject);
+    procedure current_add_btnClick(Sender: TObject);
+    procedure Holiday_add_btnClick(Sender: TObject);
   
   private
 
@@ -101,6 +103,7 @@ begin
   form1.holiday_listbox.clear();
   CurrentDayList.ClearList();
   HolydayList.ClearList();
+
 end;
 
 procedure UpdateFormList;
@@ -120,6 +123,8 @@ end;
 
 procedure TForm1.FormCreate(Sender: TObject);
 begin
+
+
   CurrentActiveDay := DayOfWeek(Now)-1;
   case CurrentActiveDay of
     1: form1.Article_label.Caption := ' —Â„Ó‰Ìˇ œŒÕ≈ƒ≈À‹Õ» ';
@@ -190,10 +195,42 @@ procedure TForm1.Drag_btnClick(Sender: TObject);
 begin
   isExpand := not isExpand;
   case isExpand of
-    true: Drag_btn.Caption := '-';
-    false: Drag_btn.Caption := '+';
+    true:
+    begin
+      Drag_btn.Caption := '-';
+      Current_edit.setFocus();
+    end;
+    false:
+    begin
+      Drag_btn.Caption := '+';
+      actual_day_listbox.SetFocus();
+    end;
   end;
   btn_onTimer.Enabled := True;
+end;
+
+procedure TForm1.current_add_btnClick(Sender: TObject);
+var
+  currentDayText: string;
+begin
+  if Current_edit.Text = '' then
+    exit;
+  currentDayText := Current_edit.Text;
+  fill_listbox.addCurrentDb(CurrentActiveDay, currentDayText);
+  UpdateFormList();
+  current_edit.Clear;
+end;
+
+procedure TForm1.Holiday_add_btnClick(Sender: TObject);
+var
+  holidayText: string;
+begin
+  if Holiday_edit.Text = '' then
+    exit;
+  holidayText := Holiday_edit.Text;
+  fill_listbox.addHolidayDb(holidayText);
+  UpdateFormList();
+  Holiday_edit.Clear;
 end;
 
 end.

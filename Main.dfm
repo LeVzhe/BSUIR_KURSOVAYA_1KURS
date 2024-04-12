@@ -73,7 +73,7 @@ object Form1: TForm1
   object Priority_listbox: TListBox
     Left = 216
     Top = 80
-    Width = 193
+    Width = 201
     Height = 137
     ItemHeight = 13
     TabOrder = 0
@@ -81,7 +81,7 @@ object Form1: TForm1
   object actual_day_listbox: TListBox
     Left = 216
     Top = 248
-    Width = 193
+    Width = 201
     Height = 177
     ItemHeight = 13
     TabOrder = 1
@@ -89,7 +89,7 @@ object Form1: TForm1
   object Holiday_listbox: TListBox
     Left = 216
     Top = 456
-    Width = 193
+    Width = 201
     Height = 121
     ItemHeight = 13
     TabOrder = 2

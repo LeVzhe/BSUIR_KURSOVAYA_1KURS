@@ -13,7 +13,7 @@ var
   head, tail: adr;
 
 procedure addNode(elem: string);
-//function Calc: extended;
+procedure ClearList;
 
 implementation
 

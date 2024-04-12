@@ -81,23 +81,37 @@ begin
   form1.actual_day_listbox.clear();
   form1.holiday_listbox.clear();
   CurrentDayList.ClearList();
-  holydayList.ClearList();
+  HolydayList.ClearList();
 end;
 
 procedure UpdateFormList;
 begin
   ClearList();
   FillList();
+  case CurrentActiveDay of
+    1: form1.Actual_label.Caption := 'Планы на ПОНЕДЕЛЬНИК';
+    2: form1.Actual_label.Caption := 'Планы на ВТОРНИК';
+    3: form1.Actual_label.Caption := 'Планы на СРЕДУ';
+    4: form1.Actual_label.Caption := 'Планы на ЧЕТВЕРГ';
+    5: form1.Actual_label.Caption := 'Планы на ПЯТНИЦУ';
+    else form1.Actual_label.Caption := 'Планы на день';
+  end;
 end;
 //////////////////////////
 
 procedure TForm1.FormCreate(Sender: TObject);
-
-var
-  currentNode: HolydayList.adr;
-
 begin
   CurrentActiveDay := DayOfWeek(Now)-1;
+  case CurrentActiveDay of
+    1: form1.Article_label.Caption := 'Сегодня ПОНЕДЕЛЬНИК';
+    2: form1.Article_label.Caption := 'Сегодня ВТОРНИК';
+    3: form1.Article_label.Caption := 'Сегодня СРЕДА';
+    4: form1.Article_label.Caption := 'Сегодня ЧЕТВЕРГ';
+    5: form1.Article_label.Caption := 'Сегодня ПЯТНИЦА';
+    6: form1.Article_label.Caption := 'Сегодня СУББОТА';
+    0: form1.Article_label.Caption := 'Сегодня ВОСКРЕСЕНИЕ';
+    else form1.Article_label.Caption := 'Продуктивная неделя';
+  end;
   if (CurrentActiveDay = 6) or (CurrentActiveDay = 0) then
     CurrentActiveDay := 5;
 

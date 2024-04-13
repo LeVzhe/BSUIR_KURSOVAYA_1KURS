@@ -163,7 +163,6 @@ begin
   end;
   if (CurrentActiveDay = 6) or (CurrentActiveDay = 0) then
     CurrentActiveDay := 5;
-
   UpdateFormList();
 end;
 
@@ -331,7 +330,6 @@ begin
     4:focus_elem := '|вр|' + currentDayList.getFocus(Current_elem_index);
     5:focus_elem := '|ор|' + currentDayList.getFocus(Current_elem_index);
   end;
-
   fill_listbox.addPriorityDb(focus_elem);
   currentDayList.deleteNode(Current_elem_index+1, CurrentActiveDay);
   UpdateFormList();
@@ -401,7 +399,7 @@ begin
     dbRef := 'db/' + IntToStr(CurrentActiveDay) + '.txt';
     AssignFile(inputFile, dbRef);
     Rewrite(inputFile);
-    Write(inputFile, '***************************');
+    Write(inputFile, '] [] [] [] [] [] [] [] [] [] [] [] ');
     Writeln(inputFile);
     CloseFile(inputFile);
     UpdateFormList();
@@ -424,7 +422,7 @@ begin
     dbRef := 'db/hol.txt';
     AssignFile(inputFile, dbRef);
     Rewrite(inputFile);
-    Write(inputFile, '***************************');
+    Write(inputFile, '] [] [] [] [] [] [] [] [] [] [] [] ');
     Writeln(inputFile);
     CloseFile(inputFile);
     UpdateFormList();
@@ -447,7 +445,7 @@ begin
     dbRef := 'db/pr.txt';
     AssignFile(inputFile, dbRef);
     Rewrite(inputFile);
-    Write(inputFile, '***************************');
+    Write(inputFile, '] [] [] [] [] [] [] [] [] [] [] [] ');
     Writeln(inputFile);
     CloseFile(inputFile);
     UpdateFormList();

@@ -1,6 +1,6 @@
 object Form1: TForm1
-  Left = 854
-  Top = 137
+  Left = 825
+  Top = 166
   BorderIcons = [biSystemMenu, biMinimize]
   BorderStyle = bsToolWindow
   Caption = #1055#1088#1086#1076#1091#1082#1090#1080#1074#1085#1072#1103' '#1085#1077#1076#1077#1083#1103
@@ -420,6 +420,7 @@ object Form1: TForm1
     Top = 496
     Width = 209
     Height = 81
+    BorderStyle = bsSingle
     TabOrder = 11
     object priority_del_btn: TButton
       Left = 8

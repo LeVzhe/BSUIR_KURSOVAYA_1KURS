@@ -1,6 +1,6 @@
 object Form1: TForm1
-  Left = 538
-  Top = 96
+  Left = 796
+  Top = 110
   BorderIcons = [biSystemMenu, biMinimize]
   BorderStyle = bsToolWindow
   Caption = #1055#1088#1086#1076#1091#1082#1090#1080#1074#1085#1072#1103' '#1085#1077#1076#1077#1083#1103
@@ -282,6 +282,7 @@ object Form1: TForm1
       Font.Style = [fsBold]
       ParentFont = False
       TabOrder = 2
+      OnClick = Current_mark_btnClick
     end
     object Current_del_button: TButton
       Left = 104
@@ -378,6 +379,7 @@ object Form1: TForm1
       Font.Style = [fsBold]
       ParentFont = False
       TabOrder = 3
+      OnClick = Holiday_mark_btnClick
     end
     object Holiday_clean_btn: TButton
       Left = 104

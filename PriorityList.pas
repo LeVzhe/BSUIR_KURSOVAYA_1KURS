@@ -1,9 +1,6 @@
-unit CurrentDayList;
+unit PriorityList;
 
 interface
-uses
-  SysUtils;
-
 type
   adr = ^node;
   node = record
@@ -17,8 +14,7 @@ var
 
 procedure addNode(elem: string);
 procedure ClearList;
-procedure deleteNode(index: integer; CurrentActiveDay:integer);
-function getFocus(index: integer): string;
+procedure deleteNode(index: integer);
 
 implementation
 
@@ -42,7 +38,7 @@ procedure addNode(elem: string);
       tail := newNode;
     end;
   end;
-
+  
 procedure ClearList;
   var
     currentNode, tempNode: adr;
@@ -58,7 +54,7 @@ procedure ClearList;
     tail := nil;
   end;
 
-procedure deleteNode(index: integer; CurrentActiveDay:integer);
+procedure deleteNode(index: integer);
 var
   inputFile: Text;
   currentNode, tempNode: adr;
@@ -104,7 +100,7 @@ begin
   Dispose(tempNode);
 
   currentNode := head;
-  dbRef := 'db/' + IntToStr(CurrentActiveDay) + '.txt';
+  dbRef := 'db/hol.txt';
   AssignFile(inputFile, dbRef);
   Rewrite(inputFile);
   while currentNode <> nil do
@@ -114,19 +110,6 @@ begin
     currentNode := currentNode^.next;
   end;
   CloseFile(inputFile);
-end;
-
-function getFocus(index: integer): string;
-var
-  i:integer;
-  currentNode: adr;
-begin
-  currentNode := head;
-  for i:=1 to index do
-  begin
-    currentNode := currentNode^.next;
-  end;
-  getFocus := currentNode^.element;
 end;
 
 end.

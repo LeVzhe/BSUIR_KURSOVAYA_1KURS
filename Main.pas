@@ -51,6 +51,8 @@ type
     procedure Holiday_EditKeyPress(Sender: TObject; var Key: Char);
     procedure Current_del_buttonClick(Sender: TObject);
     procedure Holiday_del_btnClick(Sender: TObject);
+    procedure Current_mark_btnClick(Sender: TObject);
+    procedure Holiday_mark_btnClick(Sender: TObject);
   
   private
 
@@ -64,6 +66,7 @@ var
 implementation
 
 uses fill_listbox,
+      PriorityList,
       HolydayList,
       CurrentDayList;
 {$R *.dfm}
@@ -77,9 +80,11 @@ procedure FillList();
 var
   currentNode: CurrentDayList.adr;
   HolydayNode: HolydayList.adr;
+  PriorityNode: PriorityList.adr;
 begin
   currentNode := fill_listbox.fillCurrentDay(CurrentActiveDay);
   HolydayNode := fill_listbox.fillHoliday();
+  PriorityNode := fill_listbox.fillPriority();
 
   while True do
   begin
@@ -88,14 +93,20 @@ begin
 
     if HolydayNode = nil then
       Break;
+  end;
 
+  while True do
+  begin
+    form1.priority_listbox.addItem(PriorityNode^.element, nil);
+    PriorityNode := PriorityNode^.next;
+    if PriorityNode = nil then
+      Break;
   end;
 
   while True do
   begin
     form1.actual_day_listbox.addItem(currentNode^.element, nil);
     currentNode := currentNode^.next;
-
     if currentNode = nil then
       Break;
   end;
@@ -105,9 +116,10 @@ procedure ClearList();
 begin
   form1.actual_day_listbox.clear();
   form1.holiday_listbox.clear();
+  form1.priority_listbox.clear();
   CurrentDayList.ClearList();
   HolydayList.ClearList();
-
+  PriorityList.ClearList();
 end;
 
 procedure UpdateFormList;
@@ -271,5 +283,32 @@ begin
   UpdateFormList();
 end;
 
-end.
+procedure TForm1.Current_mark_btnClick(Sender: TObject);
+var
+  Current_elem_index: integer;
+  focus_elem: string;
+begin
+  Current_elem_index := actual_day_listbox.ItemIndex;
+  focus_elem := currentDayList.getFocus(Current_elem_index);
 
+  fill_listbox.addPriorityDb(focus_elem);
+  currentDayList.deleteNode(Current_elem_index+1, CurrentActiveDay);
+  UpdateFormList();
+end;
+
+procedure TForm1.Holiday_mark_btnClick(Sender: TObject);
+var
+  holyday_elem_index: integer;
+  focus_elem: string;
+begin
+  holyday_elem_index := holiday_listbox.ItemIndex;
+  focus_elem := HolydayList.getFocus(holyday_elem_index);
+
+  fill_listbox.addPriorityDb(focus_elem);
+  HolydayList.deleteNode(holyday_elem_index+1);
+  UpdateFormList();
+end;
+
+
+
+end.

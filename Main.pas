@@ -203,14 +203,14 @@ begin
   if isExpand then
   begin
     if Form1.Width < 700 then
-      Form1.Width := Form1.Width + 10
+      Form1.Width := Form1.Width + 15
     else
       btn_onTimer.Enabled := False;
   end
   else
   begin
   if Form1.Width > 470 then
-    Form1.Width := Form1.Width - 10
+    Form1.Width := Form1.Width - 15
   else
     btn_onTimer.Enabled := False;
   end;

@@ -53,7 +53,7 @@ object Form1: TForm1
     Height = 20
     Caption = #1055#1088#1080#1086#1088#1080#1090#1077#1090#1099' '#1085#1072' '#1085#1077#1076#1077#1083#1102':'
     Font.Charset = RUSSIAN_CHARSET
-    Font.Color = clWindowText
+    Font.Color = clMaroon
     Font.Height = -16
     Font.Name = 'CentSchbkCyrill BT'
     Font.Style = []

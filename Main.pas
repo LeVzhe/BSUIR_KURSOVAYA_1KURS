@@ -36,6 +36,10 @@ type
     Holiday_del_btn: TButton;
     Holiday_mark_btn: TButton;
     Holiday_clean_btn: TButton;
+    Panel3: TPanel;
+    priority_del_btn: TButton;
+    priority_clear_btn: TButton;
+    Label3: TLabel;
 
     procedure FormCreate(Sender: TObject);
     procedure Monday_btnClick(Sender: TObject);
@@ -53,6 +57,7 @@ type
     procedure Holiday_del_btnClick(Sender: TObject);
     procedure Current_mark_btnClick(Sender: TObject);
     procedure Holiday_mark_btnClick(Sender: TObject);
+    procedure priority_del_btnClick(Sender: TObject);
   
   private
 
@@ -310,5 +315,14 @@ begin
 end;
 
 
+
+procedure TForm1.priority_del_btnClick(Sender: TObject);
+var
+  priority_elem_index: integer;
+begin
+  priority_elem_index := priority_listbox.ItemIndex + 1;
+  PriorityList.deleteNode(priority_elem_index);
+  UpdateFormList();
+end;
 
 end.

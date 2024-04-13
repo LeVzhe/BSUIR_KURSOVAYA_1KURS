@@ -1,6 +1,6 @@
 object Form1: TForm1
-  Left = 796
-  Top = 110
+  Left = 864
+  Top = 156
   BorderIcons = [biSystemMenu, biMinimize]
   BorderStyle = bsToolWindow
   Caption = #1055#1088#1086#1076#1091#1082#1090#1080#1074#1085#1072#1103' '#1085#1077#1076#1077#1083#1103
@@ -91,6 +91,19 @@ object Form1: TForm1
     Width = 213
     Height = 20
     Caption = #1048#1079#1084#1077#1085#1080#1090#1100' '#1087#1083#1072#1085#1099' '#1085#1072' '#1074#1099#1093#1086#1076#1085'.'
+    Font.Charset = RUSSIAN_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -16
+    Font.Name = 'CentSchbkCyrill BT'
+    Font.Style = []
+    ParentFont = False
+  end
+  object Label3: TLabel
+    Left = 464
+    Top = 472
+    Width = 171
+    Height = 20
+    Caption = #1048#1079#1084#1077#1085#1080#1090#1100' '#1087#1088#1080#1086#1088#1080#1090#1077#1090#1099
     Font.Charset = RUSSIAN_CHARSET
     Font.Color = clWindowText
     Font.Height = -16
@@ -394,6 +407,43 @@ object Form1: TForm1
       Font.Style = [fsBold]
       ParentFont = False
       TabOrder = 4
+      WordWrap = True
+    end
+  end
+  object Panel3: TPanel
+    Left = 464
+    Top = 496
+    Width = 209
+    Height = 81
+    TabOrder = 11
+    object priority_del_btn: TButton
+      Left = 8
+      Top = 16
+      Width = 89
+      Height = 49
+      Caption = #1059#1076#1072#1083#1080#1090#1100
+      Font.Charset = RUSSIAN_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -11
+      Font.Name = 'RomanC'
+      Font.Style = [fsBold]
+      ParentFont = False
+      TabOrder = 0
+      OnClick = priority_del_btnClick
+    end
+    object priority_clear_btn: TButton
+      Left = 104
+      Top = 16
+      Width = 89
+      Height = 49
+      Caption = #1054#1095#1080#1089#1090#1080#1090#1100' '#1087#1086#1083#1077
+      Font.Charset = RUSSIAN_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -11
+      Font.Name = 'RomanC'
+      Font.Style = [fsBold]
+      ParentFont = False
+      TabOrder = 1
       WordWrap = True
     end
   end

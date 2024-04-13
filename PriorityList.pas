@@ -100,7 +100,7 @@ begin
   Dispose(tempNode);
 
   currentNode := head;
-  dbRef := 'db/hol.txt';
+  dbRef := 'db/pr.txt';
   AssignFile(inputFile, dbRef);
   Rewrite(inputFile);
   while currentNode <> nil do

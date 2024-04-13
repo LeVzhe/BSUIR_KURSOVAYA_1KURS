@@ -1,6 +1,6 @@
 object Form1: TForm1
-  Left = 864
-  Top = 156
+  Left = 854
+  Top = 137
   BorderIcons = [biSystemMenu, biMinimize]
   BorderStyle = bsToolWindow
   Caption = #1055#1088#1086#1076#1091#1082#1090#1080#1074#1085#1072#1103' '#1085#1077#1076#1077#1083#1103
@@ -329,6 +329,7 @@ object Form1: TForm1
       ParentFont = False
       TabOrder = 4
       WordWrap = True
+      OnClick = Current_clean_btnClick
     end
   end
   object Panel2: TPanel
@@ -411,6 +412,7 @@ object Form1: TForm1
       ParentFont = False
       TabOrder = 4
       WordWrap = True
+      OnClick = Holiday_clean_btnClick
     end
   end
   object Panel3: TPanel
@@ -448,6 +450,7 @@ object Form1: TForm1
       ParentFont = False
       TabOrder = 1
       WordWrap = True
+      OnClick = priority_clear_btnClick
     end
   end
   object btn_onTimer: TTimer

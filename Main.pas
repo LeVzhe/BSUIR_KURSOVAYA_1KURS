@@ -61,6 +61,9 @@ type
     procedure actual_day_listboxClick(Sender: TObject);
     procedure Holiday_listboxClick(Sender: TObject);
     procedure Priority_listboxClick(Sender: TObject);
+    procedure Current_clean_btnClick(Sender: TObject);
+    procedure Holiday_clean_btnClick(Sender: TObject);
+    procedure priority_clear_btnClick(Sender: TObject);
   
   private
 
@@ -320,7 +323,14 @@ begin
     MessageBeep(MB_ICONERROR);
     exit;
   end;
-  focus_elem := currentDayList.getFocus(Current_elem_index);
+
+  case CurrentActiveDay of
+    1:focus_elem := '|ПН|' + currentDayList.getFocus(Current_elem_index);
+    2:focus_elem := '|ВТ|' + currentDayList.getFocus(Current_elem_index);
+    3:focus_elem := '|СР|' + currentDayList.getFocus(Current_elem_index);
+    4:focus_elem := '|ЧТ|' + currentDayList.getFocus(Current_elem_index);
+    5:focus_elem := '|ПТ|' + currentDayList.getFocus(Current_elem_index);
+  end;
 
   fill_listbox.addPriorityDb(focus_elem);
   currentDayList.deleteNode(Current_elem_index+1, CurrentActiveDay);
@@ -338,7 +348,7 @@ begin
     MessageBeep(MB_ICONERROR);
     exit;
   end;
-  focus_elem := HolydayList.getFocus(holyday_elem_index);
+  focus_elem := '|ВЫХ|' + HolydayList.getFocus(holyday_elem_index);
 
   fill_listbox.addPriorityDb(focus_elem);
   HolydayList.deleteNode(holyday_elem_index+1);
@@ -377,6 +387,75 @@ procedure TForm1.Priority_listboxClick(Sender: TObject);
 begin
   if Priority_listbox.ItemIndex = 0 then
     Priority_listbox.ItemIndex := -1;
+end;
+
+procedure TForm1.Current_clean_btnClick(Sender: TObject);
+var
+  dbRef: string;
+  ButtonSelected: Integer;
+begin
+  ButtonSelected := MessageDlg('Уверены, что хотите очистить выбранный список?', mtConfirmation, [mbYes, mbNo], 0);
+  if ButtonSelected = mrYes then
+  begin
+    currentDayList.ClearList();
+    dbRef := 'db/' + IntToStr(CurrentActiveDay) + '.txt';
+    AssignFile(inputFile, dbRef);
+    Rewrite(inputFile);
+    Write(inputFile, '***************************');
+    Writeln(inputFile);
+    CloseFile(inputFile);
+    UpdateFormList();
+  end
+  else
+  begin
+    exit;
+  end;
+end;
+
+procedure TForm1.Holiday_clean_btnClick(Sender: TObject);
+var
+  dbRef: string;
+  ButtonSelected: Integer;
+begin
+  ButtonSelected := MessageDlg('Уверены, что хотите очистить список на выходные?', mtConfirmation, [mbYes, mbNo], 0);
+  if ButtonSelected = mrYes then
+  begin
+    holydayList.ClearList();
+    dbRef := 'db/hol.txt';
+    AssignFile(inputFile, dbRef);
+    Rewrite(inputFile);
+    Write(inputFile, '***************************');
+    Writeln(inputFile);
+    CloseFile(inputFile);
+    UpdateFormList();
+  end
+  else
+  begin
+    exit;
+  end;
+end;
+
+procedure TForm1.priority_clear_btnClick(Sender: TObject);
+var
+  dbRef: string;
+  ButtonSelected: Integer;
+begin
+  ButtonSelected := MessageDlg('Уверены, что хотите очистить список приоритетных задач на неделю?', mtConfirmation, [mbYes, mbNo], 0);
+  if ButtonSelected = mrYes then
+  begin
+    priorityList.ClearList();
+    dbRef := 'db/pr.txt';
+    AssignFile(inputFile, dbRef);
+    Rewrite(inputFile);
+    Write(inputFile, '***************************');
+    Writeln(inputFile);
+    CloseFile(inputFile);
+    UpdateFormList();
+  end
+  else
+  begin
+    exit;
+  end;
 end;
 
 end.

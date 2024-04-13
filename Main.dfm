@@ -5,7 +5,7 @@ object Form1: TForm1
   BorderStyle = bsToolWindow
   Caption = #1055#1088#1086#1076#1091#1082#1090#1080#1074#1085#1072#1103' '#1085#1077#1076#1077#1083#1103
   ClientHeight = 591
-  ClientWidth = 684
+  ClientWidth = 454
   Color = clBtnFace
   Constraints.MaxHeight = 630
   Constraints.MaxWidth = 700
@@ -124,6 +124,7 @@ object Form1: TForm1
     ItemHeight = 19
     ParentFont = False
     TabOrder = 0
+    OnClick = Priority_listboxClick
   end
   object actual_day_listbox: TListBox
     Left = 216
@@ -138,6 +139,7 @@ object Form1: TForm1
     ItemHeight = 19
     ParentFont = False
     TabOrder = 1
+    OnClick = actual_day_listboxClick
   end
   object Holiday_listbox: TListBox
     Left = 216
@@ -152,6 +154,7 @@ object Form1: TForm1
     ItemHeight = 19
     ParentFont = False
     TabOrder = 2
+    OnClick = Holiday_listboxClick
   end
   object Monday_btn: TButton
     Left = 8

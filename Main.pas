@@ -4,7 +4,7 @@ interface
 
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
-  Dialogs, StdCtrls, Buttons, Menus, ExtCtrls;
+  Dialogs, StdCtrls, Buttons, Menus, ExtCtrls, MMSystem;
 
 type
   TForm1 = class(TForm)
@@ -58,6 +58,9 @@ type
     procedure Current_mark_btnClick(Sender: TObject);
     procedure Holiday_mark_btnClick(Sender: TObject);
     procedure priority_del_btnClick(Sender: TObject);
+    procedure actual_day_listboxClick(Sender: TObject);
+    procedure Holiday_listboxClick(Sender: TObject);
+    procedure Priority_listboxClick(Sender: TObject);
   
   private
 
@@ -144,8 +147,6 @@ end;
 
 procedure TForm1.FormCreate(Sender: TObject);
 begin
-
-
   CurrentActiveDay := DayOfWeek(Now)-1;
   case CurrentActiveDay of
     1: form1.Article_label.Caption := ' Ñåãîäíÿ ÏÎÍÅÄÅËÜÍÈÊ';
@@ -235,11 +236,16 @@ var
   currentDayText: string;
 begin
   if Current_edit.Text = '' then
+  begin
+    MessageBeep(MB_ICONERROR);
+    current_edit.SetFocus();
     exit;
+  end;
   currentDayText := Current_edit.Text;
   fill_listbox.addCurrentDb(CurrentActiveDay, currentDayText);
   UpdateFormList();
   current_edit.Clear;
+  current_edit.SetFocus();
 end;
 
 procedure TForm1.Holiday_add_btnClick(Sender: TObject);
@@ -247,16 +253,21 @@ var
   holidayText: string;
 begin
   if Holiday_edit.Text = '' then
+  begin
+    MessageBeep(MB_ICONERROR);
+    Holiday_edit.SetFocus();
     exit;
+  end;
   holidayText := Holiday_edit.Text;
   fill_listbox.addHolidayDb(holidayText);
   UpdateFormList();
   Holiday_edit.Clear;
+  Holiday_edit.SetFocus();
 end;
 
 procedure TForm1.Current_EditKeyPress(Sender: TObject; var Key: Char);
 begin
-  if Length((Sender as TEdit).Text) >= 18 then
+  if (Length((Sender as TEdit).Text) >= 18)  and (Key <> #8) then
   begin
     Key := #0;
   end;
@@ -264,7 +275,7 @@ end;
 
 procedure TForm1.Holiday_EditKeyPress(Sender: TObject; var Key: Char);
 begin
-  if Length((Sender as TEdit).Text) >= 18 then
+  if (Length((Sender as TEdit).Text) >= 18)  and (Key <> #8) then
   begin
     Key := #0;
   end;
@@ -276,7 +287,12 @@ var
 begin
   Current_elem_index := actual_day_listbox.ItemIndex + 1;
   currentDayList.deleteNode(Current_elem_index, CurrentActiveDay);
+  if actual_day_listbox.ItemIndex = -1 then
+  begin
+    MessageBeep(MB_ICONERROR);
+  end;
   UpdateFormList();
+  actual_day_listbox.ItemIndex := 1;
 end;
 
 procedure TForm1.Holiday_del_btnClick(Sender: TObject);
@@ -285,7 +301,12 @@ var
 begin
   holyday_elem_index := holiday_listbox.ItemIndex + 1;
   holydayList.deleteNode(holyday_elem_index);
+  if holiday_listbox.ItemIndex = -1 then
+  begin
+    MessageBeep(MB_ICONERROR);
+  end;
   UpdateFormList();
+  holiday_listbox.ItemIndex := 1;
 end;
 
 procedure TForm1.Current_mark_btnClick(Sender: TObject);
@@ -294,6 +315,11 @@ var
   focus_elem: string;
 begin
   Current_elem_index := actual_day_listbox.ItemIndex;
+  if Current_elem_index = -1 then
+  begin
+    MessageBeep(MB_ICONERROR);
+    exit;
+  end;
   focus_elem := currentDayList.getFocus(Current_elem_index);
 
   fill_listbox.addPriorityDb(focus_elem);
@@ -307,6 +333,11 @@ var
   focus_elem: string;
 begin
   holyday_elem_index := holiday_listbox.ItemIndex;
+  if holyday_elem_index = -1 then
+  begin
+    MessageBeep(MB_ICONERROR);
+    exit;
+  end;
   focus_elem := HolydayList.getFocus(holyday_elem_index);
 
   fill_listbox.addPriorityDb(focus_elem);
@@ -322,7 +353,30 @@ var
 begin
   priority_elem_index := priority_listbox.ItemIndex + 1;
   PriorityList.deleteNode(priority_elem_index);
+  if priority_listbox.ItemIndex = -1 then
+  begin
+    MessageBeep(MB_ICONERROR);
+  end;
   UpdateFormList();
+  priority_listbox.ItemIndex := 1;
+end;
+
+procedure TForm1.actual_day_listboxClick(Sender: TObject);
+begin
+  if actual_day_listbox.ItemIndex = 0 then
+    actual_day_listbox.ItemIndex := -1;
+end;
+
+procedure TForm1.Holiday_listboxClick(Sender: TObject);
+begin
+  if Holiday_listbox.ItemIndex = 0 then
+    Holiday_listbox.ItemIndex := -1;
+end;
+
+procedure TForm1.Priority_listboxClick(Sender: TObject);
+begin
+  if Priority_listbox.ItemIndex = 0 then
+    Priority_listbox.ItemIndex := -1;
 end;
 
 end.

@@ -90,22 +90,22 @@ var
 ////////UPDATE/////////////////
 procedure update_btn_color(btn: integer);
 begin
-  form1.Monday_btn.Enabled := True;
-  form1.Tuesday_btn.Enabled := True;
-  form1.Wednesday_btn.Enabled := True;
-  form1.Thursday_btn.Enabled := True;
-  form1.Friday_btn.Enabled := True;
+  form1.Monday_btn.font.Size := 12;
+  form1.Tuesday_btn.font.Size := 12;
+  form1.Wednesday_btn.font.Size := 12;
+  form1.Thursday_btn.font.Size := 12;
+  form1.Friday_btn.font.Size := 12;
 
   if btn = 1 then
-    form1.Monday_btn.Enabled := false
+    form1.Monday_btn.font.Size := 18
   else if btn = 2 then
-    form1.Tuesday_btn.Enabled := false
+    form1.Tuesday_btn.font.Size := 18
   else if btn = 3 then
-    form1.Wednesday_btn.Enabled := false
+    form1.Wednesday_btn.font.Size := 18
   else if btn = 4 then
-    form1.Thursday_btn.Enabled := false
+    form1.Thursday_btn.font.Size := 18
   else if btn = 5 then
-    form1.Friday_btn.Enabled := false
+    form1.Friday_btn.font.Size := 18;
 end;
 
 procedure FillList();

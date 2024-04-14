@@ -64,7 +64,8 @@ type
     procedure Current_clean_btnClick(Sender: TObject);
     procedure Holiday_clean_btnClick(Sender: TObject);
     procedure priority_clear_btnClick(Sender: TObject);
-  
+    procedure FormDestroy(Sender: TObject);
+
   private
 
   public
@@ -148,9 +149,15 @@ begin
   end;
 end;
 //////////////////////////
+procedure TForm1.FormDestroy(Sender: TObject); //???????????
+begin
+RemoveFontResource('CenturyGothic.ttf') ;
+SendMessage(HWND_BROADCAST, WM_FONTCHANGE, 0, 0);
+end;
 
 procedure TForm1.FormCreate(Sender: TObject);
 begin
+
   sortPriority.sortInFile();
   CurrentActiveDay := DayOfWeek(Now)-1;
   case CurrentActiveDay of
@@ -401,7 +408,7 @@ begin
     dbRef := 'db/' + IntToStr(CurrentActiveDay) + '.txt';
     AssignFile(inputFile, dbRef);
     Rewrite(inputFile);
-    Write(inputFile, '] [] [] [] [] [] [] [] [] [] [] [] ');
+    Write(inputFile, '] [] [] [] [] [] [] [] [] [] [] [] [] [] [] [] [] [] [] [] [] [] [] [');
     Writeln(inputFile);
     CloseFile(inputFile);
     UpdateFormList();
@@ -424,7 +431,7 @@ begin
     dbRef := 'db/hol.txt';
     AssignFile(inputFile, dbRef);
     Rewrite(inputFile);
-    Write(inputFile, '] [] [] [] [] [] [] [] [] [] [] [] ');
+    Write(inputFile, '] [] [] [] [] [] [] [] [] [] [] [] [] [] [] [] [] [] [] [] [] [] [] [');
     Writeln(inputFile);
     CloseFile(inputFile);
     UpdateFormList();
@@ -447,7 +454,7 @@ begin
     dbRef := 'db/pr.txt';
     AssignFile(inputFile, dbRef);
     Rewrite(inputFile);
-    Write(inputFile, '] [] [] [] [] [] [] [] [] [] [] [] ');
+    Write(inputFile, '] [] [] [] [] [] [] [] [] [] [] [] [] [] [] [] [] [] [] [] [] [] [] [');
     Writeln(inputFile);
     CloseFile(inputFile);
     UpdateFormList();

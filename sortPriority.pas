@@ -51,7 +51,7 @@ begin
   AssignFile(outputFile, 'db\pr.txt');
   Rewrite(outputFile);
 
-  WriteLn(outputFile, '] [] [] [] [] [] [] [] [] [] [] []');
+  WriteLn(outputFile, '] [] [] [] [] [] [] [] [] [] [] [] [] [] [] [] [] [] [] [] [] [] [] [');
 
   for i := 1 to 6 do
   begin

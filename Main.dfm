@@ -62,13 +62,13 @@ object Form1: TForm1
   object Article_label: TLabel
     Left = 48
     Top = 8
-    Width = 382
-    Height = 47
+    Width = 340
+    Height = 38
     Caption = #1055#1088#1086#1076#1091#1082#1090#1080#1074#1085#1072#1103' '#1085#1077#1076#1077#1083#1103
-    Font.Charset = DEFAULT_CHARSET
+    Font.Charset = RUSSIAN_CHARSET
     Font.Color = clGreen
     Font.Height = -32
-    Font.Name = 'Italic'
+    Font.Name = 'Century'
     Font.Style = []
     ParentFont = False
   end

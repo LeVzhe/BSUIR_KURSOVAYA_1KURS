@@ -1,7 +1,7 @@
 unit fill_listbox;
 
 interface
-uses HolydayList, CurrentDayList, PriorityList, SysUtils;
+uses HolydayList, CurrentDayList, PriorityList, sortPriority, SysUtils;
 
   var
     inputFile: Text;
@@ -105,6 +105,8 @@ procedure addHolidayDb(str:string);
     write(inputFile, str);
     writeln(inputFile);
     close(inputFile);
+
+    sortPriority.sortInFile();
   end;
 end.
  

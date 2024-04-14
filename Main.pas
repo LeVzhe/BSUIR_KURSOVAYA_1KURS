@@ -79,7 +79,8 @@ implementation
 uses fill_listbox,
       PriorityList,
       HolydayList,
-      CurrentDayList;
+      CurrentDayList,
+      sortPriority;
 {$R *.dfm}
 
 var
@@ -150,6 +151,7 @@ end;
 
 procedure TForm1.FormCreate(Sender: TObject);
 begin
+  sortPriority.sortInFile();
   CurrentActiveDay := DayOfWeek(Now)-1;
   case CurrentActiveDay of
     1: form1.Article_label.Caption := ' Сегодня ПОНЕДЕЛЬНИК';

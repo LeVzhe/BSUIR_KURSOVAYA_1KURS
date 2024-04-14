@@ -64,7 +64,6 @@ type
     procedure Current_clean_btnClick(Sender: TObject);
     procedure Holiday_clean_btnClick(Sender: TObject);
     procedure priority_clear_btnClick(Sender: TObject);
-    procedure FormDestroy(Sender: TObject);
 
   private
 
@@ -89,6 +88,26 @@ var
   isExpand: boolean;
 
 ////////UPDATE/////////////////
+procedure update_btn_color(btn: integer);
+begin
+  form1.Monday_btn.Enabled := True;
+  form1.Tuesday_btn.Enabled := True;
+  form1.Wednesday_btn.Enabled := True;
+  form1.Thursday_btn.Enabled := True;
+  form1.Friday_btn.Enabled := True;
+
+  if btn = 1 then
+    form1.Monday_btn.Enabled := false
+  else if btn = 2 then
+    form1.Tuesday_btn.Enabled := false
+  else if btn = 3 then
+    form1.Wednesday_btn.Enabled := false
+  else if btn = 4 then
+    form1.Thursday_btn.Enabled := false
+  else if btn = 5 then
+    form1.Friday_btn.Enabled := false
+end;
+
 procedure FillList();
 var
   currentNode: CurrentDayList.adr;
@@ -148,16 +167,9 @@ begin
     else form1.Actual_label.Caption := 'Планы на день';
   end;
 end;
-//////////////////////////
-procedure TForm1.FormDestroy(Sender: TObject); //???????????
-begin
-RemoveFontResource('CenturyGothic.ttf') ;
-SendMessage(HWND_BROADCAST, WM_FONTCHANGE, 0, 0);
-end;
 
 procedure TForm1.FormCreate(Sender: TObject);
 begin
-
   sortPriority.sortInFile();
   CurrentActiveDay := DayOfWeek(Now)-1;
   case CurrentActiveDay of
@@ -167,41 +179,47 @@ begin
     4: form1.Article_label.Caption := ' Сегодня ЧЕТВЕРГ';
     5: form1.Article_label.Caption := ' Сегодня ПЯТНИЦА';
     6: form1.Article_label.Caption := ' Сегодня СУББОТА';
-    0: form1.Article_label.Caption := ' Сегодня ВОСКРЕСЕНИЕ';
+    0: form1.Article_label.Caption := ' Сегодня ВОСКРЕСЕНЬЕ';
     else form1.Article_label.Caption := ' Продуктивная неделя';
   end;
   if (CurrentActiveDay = 6) or (CurrentActiveDay = 0) then
     CurrentActiveDay := 5;
   UpdateFormList();
+  update_btn_color(CurrentActiveDay);
 end;
 
 procedure TForm1.Monday_btnClick(Sender: TObject);
 begin
   CurrentActiveDay := 1;
+  update_btn_color(CurrentActiveDay);
   UpdateFormList();
 end;
 
 procedure TForm1.Tuesday_btnClick(Sender: TObject);
 begin
   CurrentActiveDay := 2;
+  update_btn_color(CurrentActiveDay);
   UpdateFormList();
 end;
 
 procedure TForm1.Wednesday_btnClick(Sender: TObject);
 begin
   CurrentActiveDay := 3;
+  update_btn_color(CurrentActiveDay);
   UpdateFormList();
 end;
 
 procedure TForm1.Thursday_btnClick(Sender: TObject);
 begin
   CurrentActiveDay := 4;
+  update_btn_color(CurrentActiveDay);
   UpdateFormList();
 end;
 
 procedure TForm1.Friday_btnClick(Sender: TObject);
 begin
   CurrentActiveDay := 5;
+  update_btn_color(CurrentActiveDay);
   UpdateFormList();
 end;
 
@@ -366,9 +384,57 @@ end;
 
 procedure TForm1.priority_del_btnClick(Sender: TObject);
 var
-  priority_elem_index: integer;
+  priority_elem_index, i, j: integer;
+  focus_str, indexDay: string;
 begin
+  j:=0;
   priority_elem_index := priority_listbox.ItemIndex + 1;
+  indexDay := '****';
+  focus_str := priorityList.getFocus(priority_elem_index - 1);
+
+  for i:=1 to 5 do
+  begin
+    if focus_str[i] = '|' then
+      inc(j);
+    indexDay[i] := focus_str[i];
+    if j = 2 then
+      break;
+    if i = 4 then
+      indexDay := '|ВЫХ*';
+  end;
+
+  if indexDay = '|ПН|' then
+  begin
+    focus_str := Copy(focus_str, 5, Length(focus_str));
+    fill_listbox.addCurrentDb(1, focus_str)
+  end
+  else if indexDay = '|ВТ|' then
+  begin
+    focus_str := Copy(focus_str, 5, Length(focus_str));
+    fill_listbox.addCurrentDb(2, focus_str)
+  end
+  else if indexDay = '|СР|' then
+  begin
+    focus_str := Copy(focus_str, 5, Length(focus_str));
+    fill_listbox.addCurrentDb(3, focus_str)
+  end
+  else if indexDay = '|ЧТ|' then
+  begin
+    focus_str := Copy(focus_str, 5, Length(focus_str));
+    fill_listbox.addCurrentDb(4, focus_str)
+  end
+  else if indexDay = '|ПТ|' then
+  begin
+    focus_str := Copy(focus_str, 5, Length(focus_str));
+    fill_listbox.addCurrentDb(5, focus_str)
+  end
+  else if indexDay = '|ВЫХ|' then
+  begin
+    focus_str := Copy(focus_str, 6, Length(focus_str));
+    fill_listbox.addHolidayDb(focus_str);
+  end;
+
+  priority_listbox.AddItem(indexDay, nil);
   PriorityList.deleteNode(priority_elem_index);
   if priority_listbox.ItemIndex = -1 then
   begin

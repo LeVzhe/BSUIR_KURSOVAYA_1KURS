@@ -1,11 +1,11 @@
 object Form1: TForm1
-  Left = 910
-  Top = 115
+  Left = 593
+  Top = 146
   BorderIcons = [biSystemMenu, biMinimize]
   BorderStyle = bsToolWindow
   Caption = #1055#1088#1086#1076#1091#1082#1090#1080#1074#1085#1072#1103' '#1085#1077#1076#1077#1083#1103
   ClientHeight = 591
-  ClientWidth = 454
+  ClientWidth = 679
   Color = clBtnFace
   Constraints.MaxHeight = 630
   Constraints.MaxWidth = 700
@@ -290,14 +290,15 @@ object Form1: TForm1
       Top = 112
       Width = 89
       Height = 49
-      Caption = #1055#1088#1080#1086#1088#1080#1090#1077#1090
+      Caption = #1044#1086#1073#1072#1074#1080#1090#1100' '#1074' '#1087#1088#1080#1086#1088#1080#1090#1077#1090
       Font.Charset = RUSSIAN_CHARSET
       Font.Color = clWindowText
-      Font.Height = -11
+      Font.Height = -9
       Font.Name = 'RomanC'
       Font.Style = [fsBold]
       ParentFont = False
       TabOrder = 2
+      WordWrap = True
       OnClick = Current_mark_btnClick
     end
     object Current_del_button: TButton
@@ -320,7 +321,7 @@ object Form1: TForm1
       Top = 112
       Width = 91
       Height = 49
-      Caption = #1054#1095#1080#1089#1090#1080#1090#1100' '#1087#1086#1083#1077
+      Caption = #1054#1095#1080#1089#1090#1080#1090#1100' '#1089#1087#1080#1089#1086#1082
       Font.Charset = RUSSIAN_CHARSET
       Font.Color = clWindowText
       Font.Height = -11
@@ -388,14 +389,15 @@ object Form1: TForm1
       Top = 112
       Width = 89
       Height = 49
-      Caption = #1055#1088#1080#1086#1088#1080#1090#1077#1090
+      Caption = #1044#1086#1073#1072#1074#1080#1090#1100' '#1074' '#1087#1088#1080#1086#1088#1080#1090#1077#1090
       Font.Charset = RUSSIAN_CHARSET
       Font.Color = clWindowText
-      Font.Height = -11
+      Font.Height = -9
       Font.Name = 'RomanC'
       Font.Style = [fsBold]
       ParentFont = False
       TabOrder = 3
+      WordWrap = True
       OnClick = Holiday_mark_btnClick
     end
     object Holiday_clean_btn: TButton
@@ -403,7 +405,7 @@ object Form1: TForm1
       Top = 112
       Width = 89
       Height = 49
-      Caption = #1054#1095#1080#1089#1090#1080#1090#1100' '#1087#1086#1083#1077
+      Caption = #1054#1095#1080#1089#1090#1080#1090#1100' '#1089#1087#1080#1089#1086#1082
       Font.Charset = RUSSIAN_CHARSET
       Font.Color = clWindowText
       Font.Height = -11
@@ -427,14 +429,15 @@ object Form1: TForm1
       Top = 16
       Width = 89
       Height = 49
-      Caption = #1059#1076#1072#1083#1080#1090#1100
+      Caption = #1057#1085#1103#1090#1100' '#1087#1088#1080#1086#1088#1080#1090#1077#1090
       Font.Charset = RUSSIAN_CHARSET
       Font.Color = clWindowText
-      Font.Height = -11
+      Font.Height = -9
       Font.Name = 'RomanC'
       Font.Style = [fsBold]
       ParentFont = False
       TabOrder = 0
+      WordWrap = True
       OnClick = priority_del_btnClick
     end
     object priority_clear_btn: TButton
@@ -442,7 +445,7 @@ object Form1: TForm1
       Top = 16
       Width = 89
       Height = 49
-      Caption = #1054#1095#1080#1089#1090#1080#1090#1100' '#1087#1086#1083#1077
+      Caption = #1054#1095#1080#1089#1090#1080#1090#1100' '#1089#1087#1080#1089#1086#1082
       Font.Charset = RUSSIAN_CHARSET
       Font.Color = clWindowText
       Font.Height = -11

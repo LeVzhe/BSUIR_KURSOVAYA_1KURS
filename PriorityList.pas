@@ -15,6 +15,7 @@ var
 procedure addNode(elem: string);
 procedure ClearList;
 procedure deleteNode(index: integer);
+function getFocus(index: integer): string;
 
 implementation
 
@@ -110,6 +111,19 @@ begin
     currentNode := currentNode^.next;
   end;
   CloseFile(inputFile);
+end;
+
+function getFocus(index: integer): string;
+var
+  i:integer;
+  currentNode: adr;
+begin
+  currentNode := head;
+  for i:=1 to index do
+  begin
+    currentNode := currentNode^.next;
+  end;
+  getFocus := currentNode^.element;
 end;
 
 end.

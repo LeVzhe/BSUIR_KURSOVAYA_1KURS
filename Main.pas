@@ -4,7 +4,7 @@ interface
 
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
-  Dialogs, StdCtrls, Buttons, Menus, ExtCtrls, MMSystem;
+  Dialogs, StdCtrls, Buttons, Menus, ExtCtrls, MMSystem, jpeg;
 
 type
   TForm1 = class(TForm)
@@ -40,6 +40,7 @@ type
     priority_del_btn: TButton;
     priority_clear_btn: TButton;
     Label3: TLabel;
+    m_theme: TImage;
 
     procedure FormCreate(Sender: TObject);
     procedure Monday_btnClick(Sender: TObject);
@@ -229,14 +230,20 @@ begin
   if isExpand then
   begin
     if Form1.Width < 700 then
-      Form1.Width := Form1.Width + 15
+    begin
+      Form1.Width := Form1.Width + 15;
+      m_theme.Width := m_theme.Width + 15;
+    end
     else
       btn_onTimer.Enabled := False;
   end
   else
   begin
   if Form1.Width > 470 then
-    Form1.Width := Form1.Width - 15
+  begin
+    Form1.Width := Form1.Width - 15;
+    m_theme.Width := m_theme.Width - 15;
+  end
   else
     btn_onTimer.Enabled := False;
   end;
